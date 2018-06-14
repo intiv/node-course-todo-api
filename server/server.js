@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 let { mongoose } = require('./db/mongoose');
-const { User } = require('./Models/user');
+// const { User } = require('./Models/user');
 const { Todo } = require('./Models/todo');
 const { ObjectID } = require('mongodb');
 
