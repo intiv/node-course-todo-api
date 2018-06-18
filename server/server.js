@@ -18,7 +18,7 @@ const { Todo } = require('./models/todo');
 const { ObjectID } = require('mongodb');
 
 let app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -116,14 +116,14 @@ app.post('/users', (req, res) => {
     user.save().then((doc) => {
         res.send(doc);
     }).catch((e) => {
-        res.status(400).send(err);
+        res.status(400).send(e);
     });
 });
 
 
 
 app.listen(port, () => {
-    console.log('Started on port 3000');
+    console.log('Started on port '+port);
 });
 
 module.exports = {app};
