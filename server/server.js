@@ -20,6 +20,8 @@ const { ObjectID } = require('mongodb');
 let app = express();
 const port = process.env.PORT || 3000;
 
+console.log('Puerto es: ',port);
+
 app.use(bodyParser.json());
 
 
