@@ -17,6 +17,8 @@ const { User } = require('./models/user');
 const { Todo } = require('./models/todo');
 const { ObjectID } = require('mongodb');
 
+let { authenticate } = require('./middleware/authenticate');
+
 let app = express();
 const port = process.env.PORT || 3000;
 
@@ -83,7 +85,7 @@ app.delete('/todos/:id', (req, res) => {
     });
 });
 
-//PATCH
+//PATCH /todos
 
 app.patch('/todos/:id', (req, res) => {
     let id = req.params.id;
@@ -124,6 +126,13 @@ app.post('/users', (req, res) => {
     });
 });
 
+//GET /users
+
+
+
+app.get('/users/me', authenticate,  (req, res) => {
+    res.send(req.user);
+});
 
 
 app.listen(port, () => {
